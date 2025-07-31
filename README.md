@@ -26,7 +26,7 @@ cd todo-list
 npm install
 
 4. PORT=3000 
-MONGO_URI=sua-string-de-conexão-do-mongo
+MONGO_URI=-string-de-conexão-do-mongo
 (é necessário criar um arquivo env. com essa estrutura e com os dados mencionados no env. do projeto)
 
 6. npm run dev / inicie o servidor e o client
