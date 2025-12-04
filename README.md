@@ -7,6 +7,37 @@ projeto autoral com foco em praticar o uso de react e mongo
 - Exclui tarefas
 - Lista atualiza automaticamente conforme as interações do usuário
 
+## Estrutura do projeto
+
+├── .env
+├── .gitattributes
+├── .gitignore
+├── client
+│  ├── .gitignore
+│  ├── package-lock.json
+│  ├── package.json
+│  ├── public
+│  │  ├── index.html
+│  │  └── robots.txt
+│  ├── README.md
+│  └── src
+│    ├── App.css
+│    ├── App.js
+│    ├── App.test.js
+│    ├── index.css
+│    ├── index.js
+│    ├── reportWebVitals.js
+│    └── setupTests.js
+├── LICENSE
+├── models
+│  └── task.js
+├── package-lock.json
+├── package.json
+├── README.md
+├── routes
+│  └── taskRoutes.js
+└── server.js
+
 ## Tecnologias utilizadas
 - react
 - node.js
@@ -40,5 +71,3 @@ npm run dev
 Isso iniciará:
 Backend (Node) na porta 3001
 Frontend (React) na porta 3000
-
-
