@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 function App() {
   const [tasks, setTasks] = useState([]);
   const [newTitle, setNewTitle] = useState('');
-  const API_URL = 'http://localhost:3000/api/tasks';
+  const API_URL = 'http://localhost:3001/api/tasks';
 
   useEffect(() => {
     fetchTasks();
