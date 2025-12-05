@@ -1,15 +1,30 @@
-import React from "react";
-import "./Header.css";
+import React from 'react';
 
-export default function Header() {
-  return (
-    <header className="header">
-      <h1 className="logo">To-Do List</h1>
+const Header = ({ isAuthenticated, setAuth }) => {
 
-      <nav className="nav">
-        <a href="/">Home</a>
+    const handleLogout = () => {
+        localStorage.removeItem('token'); 
+        setAuth(false); 
+    };
 
-      </nav>
-    </header>
-  );
-}
+    const renderButtons = () => {
+        if (isAuthenticated) {
+            return (
+                <button onClick={handleLogout}> 
+                    Sair
+                </button>
+            );
+        } else {
+            return null; 
+        }
+    };
+
+    return (
+        <div className="header">
+            <h1>Lista de Tarefas</h1>
+            {renderButtons()}
+        </div>
+    );
+};
+
+export default Header;

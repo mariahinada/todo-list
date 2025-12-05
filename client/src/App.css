@@ -1,71 +1,181 @@
+/*
+  ESTILOS GLOBAIS E ESTRUTURA PRINCIPAL
+  =====================================
+*/
 body {
-  background-color: #f4f4f4;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
+    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-  max-width: 500px;
-  margin: 50px auto;
-  background-color: rgb(255, 255, 255);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto; 
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper {
+    padding: 0 20px; 
 }
 
 h1 {
-  text-align: center;
-  color: #333;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
 }
 
-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+/*
+  ESTILOS DO HEADER (CABEÇALHO)
+  ==============================
+*/
+.header {
+    margin: 0 auto;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+.header button {
+    display: block;
+    margin: 0 auto;
+    padding: 8px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
 }
 
-button {
-  padding: 10px 16px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.header button:hover {
+    background-color: #c82333;
 }
 
-button:hover {
-  background-color: rgb(0, 86, 179);
+
+/*
+  ESTILOS DOS FORMULÁRIOS DE AUTENTICAÇÃO (LOGIN/REGISTER)
+  ======================================================
+*/
+.auth-form {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.auth-form h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 25px;
 }
 
-li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+/* Estilo para os inputs de Email e Senha */
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-li input[type="checkbox"] {
-  margin-right: 10px;
+/* Estilo para o Botão de Submissão */
+.auth-form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
 }
 
-li span {
-  flex: 1;
+.auth-form button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
-li span.completed {
-  text-decoration: line-through;
-  color: gray;
+.auth-form p a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*
+  ESTILOS DA LISTA DE TAREFAS (TODO CONTENT)
+  ==========================================
+*/
+.add-task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.add-task-form input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-task-form button {
+    padding: 12px 20px;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.add-task-form button:hover {
+    background-color: #218838;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-title {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.task-title.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+.delete-button:hover {
+    color: #c82333;
 }
