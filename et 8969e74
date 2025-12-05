@@ -1,0 +1,12 @@
+[33m448e719[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m update: cria header
+[33m8969e74[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m docs: adiciona estrutura do projeto
+[33ma3327bd[m setup: cria ambiente de dev com concurrently
+[33mf7c972f[m fix: ajusta rotas conflitantes
+[33m194cca7[m docs: adiciona ajuste de porta
+[33me87bfd9[m update  README.md
+[33m2a917dd[m cria README.md
+[33m7195b3b[m feat: adiciona frontend react com lista de tarefas e css
+[33mb8a1f38[m feat: cria modelo task e rotas CRUD para tarefas
+[33m3d2f5ad[m chore: remove node_modules do versionamento
+[33m8f22f81[m chore: cria .gitinore
+[33mf4aa894[m Initial commit
