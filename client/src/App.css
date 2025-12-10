@@ -1,145 +1,209 @@
-/*
+/*  
+=========================================
   ESTILOS GLOBAIS E ESTRUTURA PRINCIPAL
-  =====================================
+=========================================
 */
-body {
-    background-color: #f4f7f6;
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", Arial, sans-serif;
 }
 
+body {
+    background-color: #f3f5f7;
+    color: #333;
+}
+
+/* Caixa principal */
 .container {
-    max-width: 600px;
-    margin: 40px auto; 
-    padding: 20px;
+    max-width: 620px;
+    margin: 50px auto;
+    padding: 28px;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.4s ease;
 }
 
 .content-wrapper {
-    padding: 0 20px; 
+    padding: 0 18px;
 }
 
+/* Títulos */
 h1 {
     text-align: center;
-    color: #007bff;
+    color: #3b6aff;
     margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
 }
 
+
 /*
-  ESTILOS DO HEADER (CABEÇALHO)
-  ==============================
+=========================================
+  HEADER / CABEÇALHO
+=========================================
 */
 .header {
+    background: #3b6aff;
     margin: 0 auto;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.header h1 {
+    color: #e5e7eb;
+    padding: 20px;
+    margin: auto 0;
+    user-select: none;
 }
 
 .header button {
     display: block;
     margin: 0 auto;
-    padding: 8px 15px;
-    background-color: #dc3545;
+    padding: 9px 18px;
+    background-color: #ef4444;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.2s;
+    font-weight: 600;
+    transition: 0.25s ease;
+    user-select: none;
 }
 
 .header button:hover {
-    background-color: #c82333;
+    background-color: #dc2626;
+    transform: translateY(-2px);
 }
 
 
 /*
-  ESTILOS DOS FORMULÁRIOS DE AUTENTICAÇÃO (LOGIN/REGISTER)
-  ======================================================
+=========================================
+  FORMULÁRIOS (LOGIN / REGISTER)
+=========================================
 */
 .auth-form {
-    max-width: 400px;
+    max-width: 420px;
     margin: 40px auto;
-    padding: 30px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    background: #ffffffaa;
+    backdrop-filter: blur(4px);
+    animation: fadeInUp 0.35s ease;
+    user-select: none;
 }
 
 .auth-form h2 {
     text-align: center;
-    color: #007bff;
-    margin-bottom: 25px;
+    color: #3b6aff;
+    margin-bottom: 22px;
+    font-size: 24px;
+    user-select: none;
 }
 
-/* Estilo para os inputs de Email e Senha */
+/* Inputs */
 .auth-form input[type="email"],
 .auth-form input[type="password"] {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 13px 14px;
+    margin: 12px 0;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
     font-size: 16px;
+    transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-/* Estilo para o Botão de Submissão */
+.auth-form input:focus {
+    border-color: #3b6aff;
+    box-shadow: 0 0 0 3px rgba(59, 106, 255, 0.25);
+    outline: none;
+}
+
+/* Botão principal */
 .auth-form button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #007bff;
+    background-color: #3b6aff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
     font-size: 17px;
-    margin-top: 10px;
-    transition: background-color 0.2s;
+    margin-top: 14px;
+    transition: 0.25s ease;
 }
 
 .auth-form button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #2d53db;
+    transform: translateY(-2px);
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
 }
 
 .auth-form p a {
-    color: #007bff;
+    color: #3b6aff;
+    font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
 }
 
+.auth-form p a:hover {
+    text-decoration: underline;
+}
+
+
 /*
-  ESTILOS DA LISTA DE TAREFAS (TODO CONTENT)
-  ==========================================
+=========================================
+  LISTA DE TAREFAS
+=========================================
 */
 .add-task-form {
     display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 12px;
+    margin-bottom: 26px;
 }
 
 .add-task-form input[type="text"] {
-    flex-grow: 1;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    flex: 1;
+    padding: 13px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
     font-size: 16px;
+    transition: 0.25s;
+}
+
+.add-task-form input[type="text"]:focus {
+    border-color: #3b6aff;
+    box-shadow: 0 0 0 3px rgba(59, 106, 255, 0.25);
+    outline: none;
 }
 
 .add-task-form button {
     padding: 12px 20px;
-    background-color: #28a745; 
+    background-color: #22c55e;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-.add-task-form button:hover {
-    background-color: #218838;
+    transition: 0.25s;
 }
 
+.add-task-form button:hover {
+    background-color: #16a34a;
+    transform: translateY(-2px);
+}
+
+/* Lista */
 .task-list {
     list-style: none;
     padding: 0;
@@ -148,8 +212,8 @@ h1 {
 .task-item {
     display: flex;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
+    padding: 14px 0;
+    border-bottom: 1px solid #ececec;
     font-size: 16px;
 }
 
@@ -158,24 +222,41 @@ h1 {
 }
 
 .task-title {
-    flex-grow: 1;
-    margin-left: 10px;
+    flex: 1;
+    margin-left: 12px;
 }
 
 .task-title.completed {
     text-decoration: line-through;
-    color: #999;
+    color: #9ca3af;
 }
 
 .delete-button {
     background: none;
     border: none;
-    color: #dc3545;
+    color: #ef4444;
     cursor: pointer;
-    margin-left: 15px;
-    font-size: 16px;
+    font-size: 18px;
+    transition: 0.25s;
 }
 
 .delete-button:hover {
-    color: #c82333;
+    color: #dc2626;
+    transform: scale(1.1);
+}
+
+
+/*
+=========================================
+  ANIMAÇÕES
+=========================================
+*/
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
