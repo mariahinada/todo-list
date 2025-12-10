@@ -3,20 +3,27 @@ import React, { useState, useEffect } from "react";
 const TodoContent = ({ setAuth }) => {
     const [tasks, setTasks] = useState([]);
     const [newTitle, setNewTitle] = useState("");
+    const [currentPage, setCurrentPage] = useState(1); // Estado da página atual
+    const [totalPages, setTotalPages] = useState(1);   // Estado do total de páginas
+    const tasksPerPage = 5; // Número de tarefas por página (deve ser igual ao limite do backend)
     const API_URL = "http://localhost:3001/api/tasks";
 
     const getToken = () => localStorage.getItem("token");
 
+    // useEffect para buscar tarefas na montagem E sempre que a página mudar
     useEffect(() => {
         fetchTasks();
-    }, []);
+    }, [currentPage]); 
 
     const fetchTasks = async () => {
         const token = getToken();
         if (!token) return;
 
+        // Constrói a URL com os parâmetros de paginação
+        const url = `${API_URL}?page=${currentPage}&limit=${tasksPerPage}`; 
+
         try {
-            const res = await fetch(API_URL, {
+            const res = await fetch(url, {
                 headers: {
                     "x-auth-token": token,
                 },
@@ -29,7 +36,11 @@ const TodoContent = ({ setAuth }) => {
             }
 
             const data = await res.json();
-            setTasks(data);
+            
+            // Pega a lista de tarefas e o total de páginas da resposta do backend
+            setTasks(data.tasks); 
+            setTotalPages(data.totalPages); 
+            
         } catch (error) {
             console.error("Erro ao buscar tarefas:", error);
         }
@@ -53,7 +64,12 @@ const TodoContent = ({ setAuth }) => {
             
             if (res.ok) {
                 const createdTask = await res.json();
-                setTasks([...tasks, createdTask]);
+                
+                // Força o recarregamento para mostrar a nova tarefa, 
+                // garantindo que a paginação esteja correta.
+                // Se a tarefa adicionada estiver na página atual, atualiza a lista.
+                // Aqui, forçamos a busca para atualizar a paginação corretamente:
+                fetchTasks(); 
                 setNewTitle("");
             } else {
                 console.error("Falha ao adicionar tarefa:", res.status);
@@ -74,7 +90,9 @@ const TodoContent = ({ setAuth }) => {
                     "x-auth-token": token,
                 },
             });
-            setTasks(tasks.filter(task => task._id !== taskId));
+            
+            // Após deletar, forçamos o recarregamento da página atualizada
+            fetchTasks(); 
         } catch (error) {
             console.error("Erro ao deletar tarefa:", error);
         }
@@ -97,6 +115,7 @@ const TodoContent = ({ setAuth }) => {
             });
             
             if (res.ok) {
+                // Atualiza o estado localmente (melhor performance)
                 setTasks(tasks.map(t =>
                     t._id === task._id ? { ...t, completed: !t.completed } : t
                 ));
@@ -105,6 +124,13 @@ const TodoContent = ({ setAuth }) => {
             }
         } catch (error) {
             console.error("Erro ao atualizar status:", error);
+        }
+    };
+
+    // Função para navegar entre as páginas
+    const goToPage = (page) => {
+        if (page > 0 && page <= totalPages) {
+            setCurrentPage(page);
         }
     };
 
@@ -149,6 +175,27 @@ const TodoContent = ({ setAuth }) => {
                 ))}
                 {tasks.length === 0 && <p style={{textAlign: 'center', color: '#999'}}>Nenhuma tarefa encontrada.</p>}
             </ul>
+
+            {/* CONTROLES DE PAGINAÇÃO */}
+            {totalPages > 1 && ( 
+                <div className="pagination-controls" style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
+                    <button 
+                        onClick={() => goToPage(currentPage - 1)} 
+                        disabled={currentPage === 1}
+                    >
+                        Página Anterior
+                    </button>
+                    
+                    <span style={{alignSelf: 'center'}}>Página {currentPage} de {totalPages}</span>
+
+                    <button 
+                        onClick={() => goToPage(currentPage + 1)} 
+                        disabled={currentPage === totalPages}
+                    >
+                        Próxima Página
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

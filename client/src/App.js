@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import TodoContent from './components/TodoContent';
-import './App.css'; // Importação do CSS
+import './App.css';
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -34,10 +34,8 @@ function App() {
 
     const renderContent = () => {
         if (isAuthenticated) {
-            // Usuário logado: mostra o conteúdo principal das tarefas
             return <TodoContent setAuth={setAuth} />;
         } else {
-            // Usuário deslogado: mostra Login ou Registro
             if (showLogin) {
                 return <Login setAuth={setAuth} toggleAuthForm={toggleAuthForm} />;
             } else {
