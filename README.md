@@ -63,6 +63,9 @@ cd client
 ```bash
 npm install
 ```
+
+*retorne para \todo-list com ```cd ..```
+
 4. inicie o servidor e o client (roda ambos de uma vez)
 ```bash
 npm run dev
